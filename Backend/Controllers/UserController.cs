@@ -2,7 +2,7 @@
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace YourNamespace.Controllers
+namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/user")]
