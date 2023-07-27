@@ -33,7 +33,11 @@ namespace DAL.Implementations
 
         public void AddRange(IEnumerable<User> entities)
         {
-            throw new NotImplementedException();
+           using (unidad = new UnidadDeTrabajo<User>(_prograContext))
+            {
+                unidad.genericDAL.AddRange(entities);
+                unidad.Complete();
+            }
         }
 
         public IEnumerable<User> Find(Expression<Func<User, bool>> predicate)
@@ -107,7 +111,11 @@ namespace DAL.Implementations
 
         public void RemoveRange(IEnumerable<User> entities)
         {
-            throw new NotImplementedException();
+            using (unidad = new UnidadDeTrabajo<User>(_prograContext))
+            {
+                unidad.genericDAL.RemoveRange(entities);
+                unidad.Complete();
+            }
         }
 
         public User SingleOrDefault(Expression<Func<User, bool>> predicate)

@@ -1,9 +1,9 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
 using Entities.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using System.Collections.Generic;
 
 namespace BackEnd.Controllers
 {
@@ -18,38 +18,58 @@ namespace BackEnd.Controllers
             userDAL = new UserDALImp();
         }
 
-
         // GET: api/<UserController>
         [HttpGet]
-        public JsonResult Get()
+        public IActionResult Get()
         {
-            IEnumerable<User> user = userDAL.GetAll();
-            return new JsonResult(userDAL);
+            IEnumerable<User> users = userDAL.GetAll();
+            return Ok(users);
         }
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            User user = userDAL.Get(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
         }
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] User newUser)
         {
+            userDAL.Add(newUser);
+            return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
         }
 
         // PUT api/<UserController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] User updatedUser)
         {
+            User user = userDAL.Get(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            userDAL.Update(updatedUser);
+            return Ok(updatedUser);
         }
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            User user = userDAL.Get(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            userDAL.Remove(user);
+            return NoContent();
         }
     }
 }
