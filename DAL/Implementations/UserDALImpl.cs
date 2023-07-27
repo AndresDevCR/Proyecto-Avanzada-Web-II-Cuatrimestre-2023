@@ -1,144 +1,52 @@
 ﻿using DAL.Interfaces;
+using DAL.Repositories;
 using Entities.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace DAL.Implementations
 {
     public class UserDALImp : IUserDAL
     {
-        private readonly PrograContext _prograContext;
-        private UnidadDeTrabajo<User> unidad;
-   
+        private readonly IDALGenerico<User> _userRepository;
 
-        public bool Add(User entity)
+        public UserDALImp(PrograContext dbContext)
         {
-            try
-            {
-                using (unidad = new UnidadDeTrabajo<User>(_prograContext))
-                {
-                    unidad.genericDAL.Add(entity);
-                    return unidad.Complete();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log the error or handle it appropriately.
-                Console.WriteLine($"Error while adding user: {ex.Message}");
-                return false;
-            }
+            _userRepository = new GenericRepository<User>(dbContext);
         }
 
-        public void AddRange(IEnumerable<User> entities)
+        public async Task Add(User entity)
         {
-           using (unidad = new UnidadDeTrabajo<User>(_prograContext))
-            {
-                unidad.genericDAL.AddRange(entities);
-                unidad.Complete();
-            }
+            await _userRepository.Add(entity);
         }
 
-        public IEnumerable<User> Find(Expression<Func<User, bool>> predicate)
+        public async Task Delete(User entity)
         {
-            try
-            {
-                using (unidad = new UnidadDeTrabajo<User>(_prograContext))
-                {
-                    return unidad.genericDAL.Find(predicate);
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log the error or handle it appropriately.
-                Console.WriteLine($"Error while finding users: {ex.Message}");
-                return Enumerable.Empty<User>();
-            }
+            await _userRepository.Delete(entity);
         }
 
-        public User Get(int id)
+        public async Task<IEnumerable<User>> Find(Expression<Func<User, bool>> predicate)
         {
-            try
-            {
-                using (unidad = new UnidadDeTrabajo<User>(_prograContext))
-                {
-                    return unidad.genericDAL.Get(id);
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log the error or handle it appropriately.
-                Console.WriteLine($"Error while getting user: {ex.Message}");
-                return null;
-            }
+            return await _userRepository.Find(predicate);
         }
 
-        public IEnumerable<User> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
-            try
-            {
-                using (unidad = new UnidadDeTrabajo<User>(_prograContext))
-                {
-                    return unidad.genericDAL.GetAll();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log the error or handle it appropriately.
-                Console.WriteLine($"Error while getting all users: {ex.Message}");
-                return Enumerable.Empty<User>();
-            }
+            return await _userRepository.GetAll();
         }
 
-        public bool Remove(User entity)
+        public async Task<User> GetById(int id)
         {
-            try
-            {
-                using (unidad = new UnidadDeTrabajo<User>(_prograContext))
-                {
-                    unidad.genericDAL.Remove(entity);
-                    return unidad.Complete();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log the error or handle it appropriately.
-                Console.WriteLine($"Error while removing user: {ex.Message}");
-                return false;
-            }
+            return await _userRepository.GetById(id);
         }
 
-        public void RemoveRange(IEnumerable<User> entities)
+        public async Task Update(User entity)
         {
-            using (unidad = new UnidadDeTrabajo<User>(_prograContext))
-            {
-                unidad.genericDAL.RemoveRange(entities);
-                unidad.Complete();
-            }
-        }
-
-        public User SingleOrDefault(Expression<Func<User, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(User entity)
-        {
-            try
-            {
-                using (unidad = new UnidadDeTrabajo<User>(_prograContext))
-                {
-                    unidad.genericDAL.Update(entity);
-                    return unidad.Complete();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log the error or handle it appropriately.
-                Console.WriteLine($"Error while updating user: {ex.Message}");
-                return false;
-            }
+            await _userRepository.Update(entity);
         }
     }
 }

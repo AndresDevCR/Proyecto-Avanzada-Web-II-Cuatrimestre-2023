@@ -1,74 +1,69 @@
-﻿using DAL.Implementations;
-using DAL.Interfaces;
+﻿using DAL.Interfaces;
 using Entities.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
-namespace BackEnd.Controllers
+namespace YourNamespace.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/user")]
     public class UserController : ControllerBase
     {
-        private IUserDAL userDAL;
+        private readonly IUserDAL _userDAL;
 
-        public UserController()
+        public UserController(IUserDAL userDAL)
         {
-            userDAL = new UserDALImp();
+            _userDAL = userDAL;
         }
 
-        // GET: api/<UserController>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> GetAllUsers()
         {
-            IEnumerable<User> users = userDAL.GetAll();
+            var users = await _userDAL.GetAll();
             return Ok(users);
         }
 
-        // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetUserById(int id)
         {
-            User user = userDAL.Get(id);
+            var user = await _userDAL.GetById(id);
             if (user == null)
             {
-                return NotFound();
+                return NotFound($"User with ID {id} not found.");
             }
             return Ok(user);
         }
 
-        // POST api/<UserController>
         [HttpPost]
-        public IActionResult Post([FromBody] User newUser)
+        public async Task<IActionResult> CreateUser(User newUser)
         {
-            userDAL.Add(newUser);
-            return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
+            await _userDAL.Add(newUser);
+            return CreatedAtAction(nameof(GetUserById), new { id = newUser.Id }, newUser);
         }
 
-        // PUT api/<UserController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] User updatedUser)
+        public async Task<IActionResult> UpdateUser(int id, User updatedUser)
         {
-            User user = userDAL.Get(id);
-            if (user == null)
+            var existingUser = await _userDAL.GetById(id);
+            if (existingUser == null)
             {
-                return NotFound();
+                return NotFound($"User with ID {id} not found.");
             }
-            userDAL.Update(updatedUser);
-            return Ok(updatedUser);
+
+            updatedUser.Id = id; // Asegurarse de que el ID del usuario actualizado sea el mismo que el ID de la URL.
+            await _userDAL.Update(updatedUser);
+            return NoContent();
         }
 
-        // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
-            User user = userDAL.Get(id);
-            if (user == null)
+            var userToDelete = await _userDAL.GetById(id);
+            if (userToDelete == null)
             {
-                return NotFound();
+                return NotFound($"User with ID {id} not found.");
             }
-            userDAL.Remove(user);
+
+            await _userDAL.Delete(userToDelete);
             return NoContent();
         }
     }

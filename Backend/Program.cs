@@ -1,3 +1,5 @@
+using DAL.Implementations;
+using DAL.Interfaces;
 using Entities.Entities;
 using Entities.Utilities;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 #region Connection String
 
 builder.Services.AddDbContext<PrograContext>(options =>
-                                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
 string connString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -16,6 +18,7 @@ Util.ConnectionString = connString;
 #endregion
 
 // Add services to the container.
+builder.Services.AddScoped<IUserDAL, UserDALImp>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
