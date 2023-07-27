@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'control-financiero'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_32A201EF50BC41AD960233267C94558A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_967EF98EA0FB47F991E4150C01B2EECD }}
           package: .
