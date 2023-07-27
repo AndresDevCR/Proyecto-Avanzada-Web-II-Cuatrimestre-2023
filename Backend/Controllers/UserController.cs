@@ -49,10 +49,27 @@ namespace Backend.Controllers
                 return NotFound($"User with ID {id} not found.");
             }
 
-            updatedUser.Id = id; // Asegurarse de que el ID del usuario actualizado sea el mismo que el ID de la URL.
-            await _userDAL.Update(updatedUser);
+            // Update all properties of the existing user with the values from the updated user
+            existingUser.FirstName = updatedUser.FirstName;
+            existingUser.LastName = updatedUser.LastName;
+            existingUser.Email = updatedUser.Email;
+            existingUser.Password = updatedUser.Password;
+            existingUser.PasswordResetCode = updatedUser.PasswordResetCode;
+            existingUser.IsActive = updatedUser.IsActive;
+            existingUser.ProfileId = updatedUser.ProfileId;
+            existingUser.CompanyId = updatedUser.CompanyId;
+            existingUser.CompanyStartDate = updatedUser.CompanyStartDate;
+            existingUser.RoleId = updatedUser.RoleId;
+            existingUser.CreatedAt = updatedUser.CreatedAt;
+            existingUser.UpdatedAt = updatedUser.UpdatedAt;
+            existingUser.LastLogin = updatedUser.LastLogin;
+
+            // Save the updated user to the database
+            await _userDAL.Update(existingUser);
+
             return NoContent();
         }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)

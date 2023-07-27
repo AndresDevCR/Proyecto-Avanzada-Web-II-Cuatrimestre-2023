@@ -46,8 +46,12 @@ namespace DAL.Repositories
 
         public async Task Update(TEntity entity)
         {
-            _prograContext.Set<TEntity>().Update(entity);
+            // Update the properties of the entity
+            _prograContext.Entry(entity).State = EntityState.Modified;
+
+            // Save the changes
             await _prograContext.SaveChangesAsync();
         }
+
     }
 }
