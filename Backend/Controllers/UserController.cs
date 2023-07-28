@@ -8,9 +8,9 @@ namespace Backend.Controllers
     [Route("api/user")]
     public class UserController : ControllerBase
     {
-        private readonly IUserDAL _userDAL;
+        private readonly IUserDal _userDAL;
 
-        public UserController(IUserDAL userDAL)
+        public UserController(IUserDal userDAL)
         {
             _userDAL = userDAL;
         }
@@ -30,6 +30,7 @@ namespace Backend.Controllers
             {
                 return NotFound($"User with ID {id} not found.");
             }
+
             return Ok(user);
         }
 

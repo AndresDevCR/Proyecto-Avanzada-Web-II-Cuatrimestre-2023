@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
-    public class GenericRepository<TEntity> : IDALGenerico<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericDal<TEntity> where TEntity : class
     {
         private readonly PrograContext _prograContext;
 
@@ -52,6 +52,5 @@ namespace DAL.Repositories
             // Save the changes
             await _prograContext.SaveChangesAsync();
         }
-
     }
 }
