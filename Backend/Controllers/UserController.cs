@@ -8,9 +8,9 @@ namespace Backend.Controllers
     [Route("api/user")]
     public class UserController : ControllerBase
     {
-        private readonly IUserDal _userDAL;
+        private readonly IUserDAL _userDAL;
 
-        public UserController(IUserDal userDAL)
+        public UserController(IUserDAL userDAL)
         {
             _userDAL = userDAL;
         }
