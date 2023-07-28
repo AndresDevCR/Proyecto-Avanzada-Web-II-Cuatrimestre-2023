@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace DAL.Implementations
 {
-    public class UserDALImp : IUserDAL
+    public class UserDalImp : IUserDal
     {
-        private readonly IDALGenerico<User> _userRepository;
+        private readonly IDalGeneric<User> _userRepository;
 
-        public UserDALImp(PrograContext dbContext)
+        public UserDalImp(PrograContext dbContext)
         {
             _userRepository = new GenericRepository<User>(dbContext);
         }
