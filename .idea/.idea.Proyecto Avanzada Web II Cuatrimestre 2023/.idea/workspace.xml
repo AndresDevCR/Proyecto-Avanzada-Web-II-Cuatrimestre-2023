@@ -9,13 +9,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4491f9a3-fa5c-4fb9-9e1b-45cd73d4312f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Backend/Controllers/RoleController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DAL/Implementations/RoleDalImpl.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DAL/Interfaces/IRoleDal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Proyecto Avanzada Web II Cuatrimestre 2023/.idea/shelf/Uncommitted_changes_before_Update_at_7_28_2023_2_57_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Proyecto Avanzada Web II Cuatrimestre 2023/.idea/shelf/Uncommitted_changes_before_Update_at_7_28_2023_2_57_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Proyecto Avanzada Web II Cuatrimestre 2023/.idea/shelf/Uncommitted_changes_before_Update_at_7_28_2023_3_00_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Proyecto Avanzada Web II Cuatrimestre 2023/.idea/shelf/Uncommitted_changes_before_Update_at_7_28_2023_3_00_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Proyecto Avanzada Web II Cuatrimestre 2023/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Proyecto Avanzada Web II Cuatrimestre 2023/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Entities/Enterprise.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Entities/Enterprise.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Entities/Invoice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Entities/Invoice.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Entities/PrograContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Entities/PrograContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Entities/Quotation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Entities/Quotation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Entities/Role.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Entities/Role.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Entities/Supplier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Entities/Supplier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Entities/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Entities/Vacation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Entities/Vacation.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +53,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/45d86f69cd178b3d9fc9bc8cdbec69ff451e585512706ce7e2a9981902319a/TemplateParser.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/javar/source/repos/Proyecto Avanzada Web II Cuatrimestre 2023/Entities/Entities/Address.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/source/repos/Proyecto Avanzada Web II Cuatrimestre 2023/Backend/Controllers/UserController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/source/repos/Proyecto Avanzada Web II Cuatrimestre 2023/Backend/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/source/repos/Proyecto Avanzada Web II Cuatrimestre 2023/DAL/Implementations/GenericRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/source/repos/Proyecto Avanzada Web II Cuatrimestre 2023/DAL/Implementations/UserDALImpl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/source/repos/Proyecto Avanzada Web II Cuatrimestre 2023/DAL/Interfaces/IDALGenerico.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/source/repos/Proyecto Avanzada Web II Cuatrimestre 2023/DAL/Interfaces/IUserDAL.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2TBs6P362aYzitKdTT443koQYd1" />
@@ -133,7 +140,8 @@
       <workItem from="1690706494668" duration="337000" />
       <workItem from="1690707664127" duration="553000" />
       <workItem from="1690708392186" duration="91000" />
-      <workItem from="1690731899951" duration="2580000" />
+      <workItem from="1690731899951" duration="3495000" />
+      <workItem from="1690756624591" duration="2285000" />
     </task>
     <task id="LOCAL-00001" summary="code fixes an refactor">
       <option name="closed" value="true" />
