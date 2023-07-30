@@ -7,13 +7,9 @@ public partial class Invoice
 {
     public int Id { get; set; }
 
-    public string ClientName { get; set; } = null!;
+    public int QuotationId { get; set; }
 
-    public string Address { get; set; } = null!;
-
-    public string Phone { get; set; } = null!;
-
-    public string Email { get; set; } = null!;
+    public int SupplierId { get; set; }
 
     public DateTime IssueDate { get; set; }
 
@@ -21,9 +17,17 @@ public partial class Invoice
 
     public int InvoiceNumber { get; set; }
 
-    public int OrderNumber { get; set; }
+    public decimal DollarValue { get; set; }
+
+    public decimal TotalColon { get; set; }
+
+    public decimal TotalDollar { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
     public DateTime UpdatedAt { get; set; }
+
+    public virtual Quotation Quotation { get; set; } = null!;
+
+    public virtual Supplier Supplier { get; set; } = null!;
 }
