@@ -20,6 +20,11 @@ Util.ConnectionString = connString;
 // Add services to the container.
 builder.Services.AddScoped<IUserDal, UserDalImpl>();
 builder.Services.AddScoped<IRoleDal, RoleDalImpl>();
+builder.Services.AddScoped<IRoleHasPermissionDal, RoleHasPermissionDalImpl>();
+builder.Services.AddScoped<ISupplierDal, SupplierDalImpl>();
+builder.Services.AddScoped<IVacationDal, VacationDalImpl>();
+builder.Services.AddScoped<IQuotationDal, QuotationDalImpl>();
+builder.Services.AddScoped<IUserHasApplicationDal, UserHasApplicationDalImpl>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
