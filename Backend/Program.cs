@@ -20,6 +20,12 @@ Util.ConnectionString = connString;
 // Add services to the container.
 builder.Services.AddScoped<IUserDal, UserDalImpl>();
 builder.Services.AddScoped<IRoleDal, RoleDalImpl>();
+builder.Services.AddScoped<IAddressDal, AddressDalImpl>();
+builder.Services.AddScoped<IApplicationDal, ApplicationDalImpl>();
+builder.Services.AddScoped<IClientDal, ClientDalImpl>();
+builder.Services.AddScoped<ICompanyDal, CompanyDalImpl>();
+builder.Services.AddScoped<IDepartmentDal, DepartmentDalImpl>();
+builder.Services.AddScoped<IEmployeeDal, EmployeeDalImpl>();
 builder.Services.AddScoped<IEnterpriseDAL, EnterpriseDALImpl>();
 builder.Services.AddScoped<IHumanResourceDAL, HumanResourceDalImpl>();
 builder.Services.AddScoped<IInventoryDAL, InventoryDalImpl>();
