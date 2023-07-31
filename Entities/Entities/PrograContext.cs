@@ -280,15 +280,15 @@ public partial class PrograContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
 
-            entity.HasOne(d => d.Department).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.DepartmentId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__employee__depart__6FB49575");
+            //entity.HasOne(d => d.Department).WithMany(p => p.Employees)
+            //    .HasForeignKey(d => d.DepartmentId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__employee__depart__6FB49575");
 
-            entity.HasOne(d => d.Position).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.PositionId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__employee__positi__6EC0713C");
+            //entity.HasOne(d => d.Position).WithMany(p => p.Employees)
+            //    .HasForeignKey(d => d.PositionId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__employee__positi__6EC0713C");
         });
 
         modelBuilder.Entity<Enterprise>(entity =>
@@ -524,10 +524,10 @@ public partial class PrograContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
 
-            entity.HasOne(d => d.Employee).WithMany(p => p.Payments)
-                .HasForeignKey(d => d.EmployeeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__payment__employe__793DFFAF");
+            //entity.HasOne(d => d.Employee).WithMany(p => p.Payments)
+            //    .HasForeignKey(d => d.EmployeeId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__payment__employe__793DFFAF");
         });
 
         modelBuilder.Entity<Permission>(entity =>
@@ -697,9 +697,9 @@ public partial class PrograContext : DbContext
             entity.Property(e => e.RoleId).HasColumnName("role_id");
             entity.Property(e => e.PermissionId).HasColumnName("permission_id");
 
-            entity.HasOne(d => d.Permission).WithMany(p => p.RoleHasPermissions)
-                .HasForeignKey(d => d.PermissionId)
-                .HasConstraintName("fk_permission");
+            //entity.HasOne(d => d.Permission).WithMany(p => p.RoleHasPermissions)
+            //    .HasForeignKey(d => d.PermissionId)
+            //    .HasConstraintName("fk_permission");
         });
 
         modelBuilder.Entity<Supplier>(entity =>
@@ -789,9 +789,9 @@ public partial class PrograContext : DbContext
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.ApplicationId).HasColumnName("application_id");
 
-            entity.HasOne(d => d.Application).WithMany(p => p.UserHasApplications)
-                .HasForeignKey(d => d.ApplicationId)
-                .HasConstraintName("fk_application");
+            //entity.HasOne(d => d.Application).WithMany(p => p.UserHasApplications)
+            //    .HasForeignKey(d => d.ApplicationId)
+            //    .HasConstraintName("fk_application");
         });
 
         modelBuilder.Entity<Vacation>(entity =>

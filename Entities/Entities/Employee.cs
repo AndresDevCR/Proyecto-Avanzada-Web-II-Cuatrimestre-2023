@@ -27,11 +27,11 @@ public partial class Employee
 
     public DateTime UpdatedAt { get; set; }
 
-    public virtual Department Department { get; set; } = null!;
+    //public virtual Department Department { get; set; } = null!;
 
-    public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
+    //public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
 
-    public virtual Position Position { get; set; } = null!;
+    //public virtual Position Position { get; set; } = null!;
 
-    public virtual ICollection<Vacation> Vacations { get; set; } = new List<Vacation>();
+    //public virtual ICollection<Vacation> Vacations { get; set; } = new List<Vacation>();
 }
