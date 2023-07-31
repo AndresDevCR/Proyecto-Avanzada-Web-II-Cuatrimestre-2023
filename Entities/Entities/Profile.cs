@@ -11,5 +11,5 @@ public partial class Profile
 
     public DateTime? Birthdate { get; set; }
 
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+    //public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

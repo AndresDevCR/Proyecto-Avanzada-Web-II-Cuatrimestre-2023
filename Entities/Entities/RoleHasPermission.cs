@@ -9,5 +9,5 @@ public partial class RoleHasPermission
 
     public int PermissionId { get; set; }
 
-    public virtual Permission Permission { get; set; } = null!;
+    //public virtual Permission Permission { get; set; } = null!;
 }

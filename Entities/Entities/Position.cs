@@ -13,5 +13,5 @@ public partial class Position
 
     public DateTime UpdatedAt { get; set; }
 
-    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
+    //public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }
