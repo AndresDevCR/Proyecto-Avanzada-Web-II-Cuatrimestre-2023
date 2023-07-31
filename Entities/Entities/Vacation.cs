@@ -19,5 +19,5 @@ public partial class Vacation
 
     public DateTime UpdatedAt { get; set; }
 
-    public virtual Employee Employee { get; set; } = null!;
+    // public virtual Employee Employee { get; set; } = null!;
 }

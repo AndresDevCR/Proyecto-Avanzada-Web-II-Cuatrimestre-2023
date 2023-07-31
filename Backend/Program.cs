@@ -26,6 +26,17 @@ builder.Services.AddScoped<IClientDal, ClientDalImpl>();
 builder.Services.AddScoped<ICompanyDal, CompanyDalImpl>();
 builder.Services.AddScoped<IDepartmentDal, DepartmentDalImpl>();
 builder.Services.AddScoped<IEmployeeDal, EmployeeDalImpl>();
+builder.Services.AddScoped<IEnterpriseDAL, EnterpriseDALImpl>();
+builder.Services.AddScoped<IHumanResourceDAL, HumanResourceDalImpl>();
+builder.Services.AddScoped<IInventoryDAL, InventoryDalImpl>();
+builder.Services.AddScoped<IInvoiceDAL, InvoiceDalImpl>();
+builder.Services.AddScoped<ILocationDAL, LocationDalImpl>();
+builder.Services.AddScoped<IPaymentDAL, PaymentDalImpl>();
+builder.Services.AddScoped<IRoleHasPermissionDal, RoleHasPermissionDalImpl>();
+builder.Services.AddScoped<ISupplierDal, SupplierDalImpl>();
+builder.Services.AddScoped<IVacationDal, VacationDalImpl>();
+builder.Services.AddScoped<IQuotationDal, QuotationDalImpl>();
+builder.Services.AddScoped<IUserHasApplicationDal, UserHasApplicationDalImpl>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
