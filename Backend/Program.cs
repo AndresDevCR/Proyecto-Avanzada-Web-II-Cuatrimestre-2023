@@ -1,3 +1,4 @@
+using Backend.Middlewares;
 using DAL.Implementations;
 using DAL.Interfaces;
 using Entities.Entities;
@@ -38,12 +39,20 @@ builder.Services.AddScoped<IVacationDal, VacationDalImpl>();
 builder.Services.AddScoped<IQuotationDal, QuotationDalImpl>();
 builder.Services.AddScoped<IUserHasApplicationDal, UserHasApplicationDalImpl>();
 
+
+
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<GlobalRoutePrefixMiddleware>("/api/v1");
+app.UsePathBase(new PathString("/api/v1"));
+app.UseRouting();
 
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -54,6 +63,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UsePathBase(new PathString("/api/v1"));
+app.UseRouting();
 
 app.UseAuthorization();
 
