@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/inventory")]
+    [Route("inventory")]
     public class InventoryController : ControllerBase
     {
         private readonly IInventoryDAL _inventoryDAL;

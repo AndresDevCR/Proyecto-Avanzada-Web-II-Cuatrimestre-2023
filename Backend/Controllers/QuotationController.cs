@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/quotation")]
+    [Route("quotation")]
     public class QuotationController: ControllerBase
     {
         private readonly IQuotationDal _quotationDal;

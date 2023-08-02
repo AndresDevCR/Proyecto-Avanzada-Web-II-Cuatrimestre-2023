@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/user")]
+    [Route("user")]
     public class UserController : ControllerBase
     {
         private readonly IUserDal _userDAL;

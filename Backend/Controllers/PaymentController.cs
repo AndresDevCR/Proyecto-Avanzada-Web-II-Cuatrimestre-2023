@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/payment")]
+    [Route("payment")]
     public class PaymentController : ControllerBase
     {
         private readonly IPaymentDAL _paymentDAL;

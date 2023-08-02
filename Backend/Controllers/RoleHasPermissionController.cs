@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/role_has_permission")]
+    [Route("role_has_permission")]
     public class RoleHasPermissionController: ControllerBase
     {
         private readonly IRoleHasPermissionDal _roleHasPermissionDal;

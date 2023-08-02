@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/vacation")]
+    [Route("vacation")]
     public class VacationController: ControllerBase
     {
         private readonly IVacationDal _vacationDal;
