@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/application")]
+    [Route("application")]
     public class ApplicationController : ControllerBase
     {
         private readonly IApplicationDal _applicationDAL;

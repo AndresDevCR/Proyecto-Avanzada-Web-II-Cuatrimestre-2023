@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/address")]
+    [Route("address")]
     public class AddressController : ControllerBase
     {
         private readonly IAddressDal _addressDAL;

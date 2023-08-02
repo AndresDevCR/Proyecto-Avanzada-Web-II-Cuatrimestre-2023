@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/role")]
+    [Route("role")]
     public class RoleController : ControllerBase
     {
         private readonly IRoleDal _roleDAL;

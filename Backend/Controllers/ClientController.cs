@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/client")]
+    [Route("client")]
     public class ClientController : ControllerBase
     {
         private readonly IClientDal _clientDAL;

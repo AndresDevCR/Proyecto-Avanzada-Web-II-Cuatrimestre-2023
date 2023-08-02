@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/department")]
+    [Route("department")]
     public class DepartmentController : ControllerBase
     {
         private readonly IDepartmentDal _departmentDAL;

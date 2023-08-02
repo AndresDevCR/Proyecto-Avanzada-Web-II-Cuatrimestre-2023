@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/humanresource")]
+    [Route("humanresource")]
     public class HumanResourceController : ControllerBase
     {
         private readonly IHumanResourceDAL _humanResourceDAL;

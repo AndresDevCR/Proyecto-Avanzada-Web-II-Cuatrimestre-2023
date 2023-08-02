@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/employee")]
+    [Route("employee")]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeDal _employeeDAL;

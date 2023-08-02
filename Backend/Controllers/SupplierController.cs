@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/supplier")]
+    [Route("supplier")]
     public class SupplierController: ControllerBase
     {
         private readonly ISupplierDal _supplierDal;

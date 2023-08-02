@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/invoice")]
+    [Route("invoice")]
     public class InvoiceController : ControllerBase
     {
         private readonly IInvoiceDAL _invoiceDAL;

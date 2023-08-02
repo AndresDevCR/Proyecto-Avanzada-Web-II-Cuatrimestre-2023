@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/enterprise")]
+    [Route("enterprise")]
     public class EnterpriseController : ControllerBase
     {
         private readonly IEnterpriseDAL _enterpriseDAL; 

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/userHasApplication")]
+    [Route("userHasApplication")]
     public class UserHasApplicationController: ControllerBase
     {
         private readonly IUserHasApplicationDal _userHasApplicationDal;

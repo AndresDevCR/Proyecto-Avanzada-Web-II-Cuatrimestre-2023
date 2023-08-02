@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("api/location")]
+    [Route("location")]
     public class LocationController : ControllerBase
     {
         private readonly ILocationDAL _locationDAL;
