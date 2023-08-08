@@ -69,9 +69,9 @@ public partial class PrograContext : DbContext
         optionsBuilder.UseSqlServer(Util.ConnectionString);
         base.OnConfiguring(optionsBuilder);
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<Address>(entity =>
@@ -170,10 +170,10 @@ public partial class PrograContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
 
-             entity.HasOne(d => d.Enterprise).WithMany(p => p.Clients)
-                 .HasForeignKey(d => d.EnterpriseId)
-                 .OnDelete(DeleteBehavior.ClientSetNull)
-                 .HasConstraintName("FK__client__enterpri__540C7B00");
+            //entity.HasOne(d => d.Enterprise).WithMany(p => p.Clients)
+              //  .HasForeignKey(d => d.EnterpriseId)
+                //.OnDelete(DeleteBehavior.ClientSetNull)
+                //.HasConstraintName("FK__client__enterpri__540C7B00");
         });
 
         modelBuilder.Entity<Company>(entity =>
@@ -280,15 +280,15 @@ public partial class PrograContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
 
-            //entity.HasOne(d => d.Department).WithMany(p => p.Employees)
-            //    .HasForeignKey(d => d.DepartmentId)
-            //    .OnDelete(DeleteBehavior.ClientSetNull)
-            //    .HasConstraintName("FK__employee__depart__6FB49575");
+           // entity.HasOne(d => d.Department).WithMany(p => p.Employees)
+             //   .HasForeignKey(d => d.DepartmentId)
+               // .OnDelete(DeleteBehavior.ClientSetNull)
+                //.HasConstraintName("FK__employee__depart__6FB49575");
 
-            //entity.HasOne(d => d.Position).WithMany(p => p.Employees)
-            //    .HasForeignKey(d => d.PositionId)
-            //    .OnDelete(DeleteBehavior.ClientSetNull)
-            //    .HasConstraintName("FK__employee__positi__6EC0713C");
+//            entity.HasOne(d => d.Position).WithMany(p => p.Employees)
+  //              .HasForeignKey(d => d.PositionId)
+    //            .OnDelete(DeleteBehavior.ClientSetNull)
+      //          .HasConstraintName("FK__employee__positi__6EC0713C");
         });
 
         modelBuilder.Entity<Enterprise>(entity =>
@@ -420,15 +420,15 @@ public partial class PrograContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
 
-            // entity.HasOne(d => d.Quotation).WithMany(p => p.Invoices)
-            //     .HasForeignKey(d => d.QuotationId)
-            //     .OnDelete(DeleteBehavior.ClientSetNull)
-            //     .HasConstraintName("FK__invoice__quotati__6166761E");
+   //         entity.HasOne(d => d.Quotation).WithMany(p => p.Invoices)
+     //           .HasForeignKey(d => d.QuotationId)
+       //         .OnDelete(DeleteBehavior.ClientSetNull)
+         //       .HasConstraintName("FK__invoice__quotati__6166761E");
 
-            // entity.HasOne(d => d.Supplier).WithMany(p => p.Invoices)
-            //     .HasForeignKey(d => d.SupplierId)
-            //     .OnDelete(DeleteBehavior.ClientSetNull)
-            //     .HasConstraintName("FK__invoice__supplie__625A9A57");
+     //       entity.HasOne(d => d.Supplier).WithMany(p => p.Invoices)
+       //         .HasForeignKey(d => d.SupplierId)
+         //       .OnDelete(DeleteBehavior.ClientSetNull)
+           //     .HasConstraintName("FK__invoice__supplie__625A9A57");
         });
 
         modelBuilder.Entity<Location>(entity =>
@@ -524,10 +524,10 @@ public partial class PrograContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
 
-            //entity.HasOne(d => d.Employee).WithMany(p => p.Payments)
-            //    .HasForeignKey(d => d.EmployeeId)
-            //    .OnDelete(DeleteBehavior.ClientSetNull)
-            //    .HasConstraintName("FK__payment__employe__793DFFAF");
+   //         entity.HasOne(d => d.Employee).WithMany(p => p.Payments)
+     //           .HasForeignKey(d => d.EmployeeId)
+       //         .OnDelete(DeleteBehavior.ClientSetNull)
+         //       .HasConstraintName("FK__payment__employe__793DFFAF");
         });
 
         modelBuilder.Entity<Permission>(entity =>
@@ -579,9 +579,9 @@ public partial class PrograContext : DbContext
                 .HasColumnName("updated_on");
             entity.Property(e => e.UserId).HasColumnName("user_id");
 
-            // entity.HasOne(d => d.User).WithMany(p => p.Phones)
-            //     .HasForeignKey(d => d.UserId)
-            //     .HasConstraintName("fk_user");
+            //entity.HasOne(d => d.User).WithMany(p => p.Phones)
+              //  .HasForeignKey(d => d.UserId)
+                //.HasConstraintName("fk_user");
         });
 
         modelBuilder.Entity<Position>(entity =>
@@ -659,10 +659,10 @@ public partial class PrograContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
 
-            // entity.HasOne(d => d.Client).WithMany(p => p.Quotations)
-            //     .HasForeignKey(d => d.ClientId)
-            //     .OnDelete(DeleteBehavior.ClientSetNull)
-            //     .HasConstraintName("FK__quotation__clien__58D1301D");
+  //          entity.HasOne(d => d.Client).WithMany(p => p.Quotations)
+    //            .HasForeignKey(d => d.ClientId)
+      //          .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK__quotation__clien__58D1301D");
         });
 
         modelBuilder.Entity<Role>(entity =>
@@ -697,9 +697,9 @@ public partial class PrograContext : DbContext
             entity.Property(e => e.RoleId).HasColumnName("role_id");
             entity.Property(e => e.PermissionId).HasColumnName("permission_id");
 
-            //entity.HasOne(d => d.Permission).WithMany(p => p.RoleHasPermissions)
-            //    .HasForeignKey(d => d.PermissionId)
-            //    .HasConstraintName("fk_permission");
+    //        entity.HasOne(d => d.Permission).WithMany(p => p.RoleHasPermissions)
+      //          .HasForeignKey(d => d.PermissionId)
+        //        .HasConstraintName("fk_permission");
         });
 
         modelBuilder.Entity<Supplier>(entity =>
@@ -767,17 +767,13 @@ public partial class PrograContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
 
-            // entity.HasOne(d => d.Company).WithMany(p => p.Users)
-            //     .HasForeignKey(d => d.CompanyId)
-            //     .HasConstraintName("fk_company");
-            //
-            // entity.HasOne(d => d.Profile).WithMany(p => p.Users)
-            //     .HasForeignKey(d => d.ProfileId)
-            //     .HasConstraintName("fk_profile");
-            //
-            // entity.HasOne(d => d.Role).WithMany(p => p.Users)
-            //     .HasForeignKey(d => d.RoleId)
-            //     .HasConstraintName("fk_role");
+            //entity.HasOne(d => d.Company).WithMany(p => p.Users)
+              //  .HasForeignKey(d => d.CompanyId)
+               // .HasConstraintName("fk_company");
+
+            //entity.HasOne(d => d.Role).WithMany(p => p.Users)
+              //  .HasForeignKey(d => d.RoleId)
+              //  .HasConstraintName("fk_role");
         });
 
         modelBuilder.Entity<UserHasApplication>(entity =>
@@ -789,9 +785,9 @@ public partial class PrograContext : DbContext
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.ApplicationId).HasColumnName("application_id");
 
-            //entity.HasOne(d => d.Application).WithMany(p => p.UserHasApplications)
-            //    .HasForeignKey(d => d.ApplicationId)
-            //    .HasConstraintName("fk_application");
+    //        entity.HasOne(d => d.Application).WithMany(p => p.UserHasApplications)
+      //          .HasForeignKey(d => d.ApplicationId)
+        //        .HasConstraintName("fk_application");
         });
 
         modelBuilder.Entity<Vacation>(entity =>
@@ -819,10 +815,10 @@ public partial class PrograContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
 
-            // entity.HasOne(d => d.Employee).WithMany(p => p.Vacations)
-            //     .HasForeignKey(d => d.EmployeeId)
-            //     .OnDelete(DeleteBehavior.ClientSetNull)
-            //     .HasConstraintName("FK__vacation__employ__74794A92");
+   //         entity.HasOne(d => d.Employee).WithMany(p => p.Vacations)
+     //           .HasForeignKey(d => d.EmployeeId)
+       //         .OnDelete(DeleteBehavior.ClientSetNull)
+         //       .HasConstraintName("FK__vacation__employ__74794A92");
         });
 
         OnModelCreatingPartial(modelBuilder);

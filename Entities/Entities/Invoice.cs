@@ -27,7 +27,7 @@ public partial class Invoice
 
     public DateTime UpdatedAt { get; set; }
 
-    // public virtual Quotation Quotation { get; set; } = null!;
+   // public virtual Quotation Quotation { get; set; } = null!;
 
-    // public virtual Supplier Supplier { get; set; } = null!;
+   // public virtual Supplier Supplier { get; set; } = null!;
 }

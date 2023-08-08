@@ -10,6 +10,4 @@ public partial class Profile
     public string? ImageUrl { get; set; }
 
     public DateTime? Birthdate { get; set; }
-
-    //public virtual ICollection<User> Users { get; set; } = new List<User>();
 }
