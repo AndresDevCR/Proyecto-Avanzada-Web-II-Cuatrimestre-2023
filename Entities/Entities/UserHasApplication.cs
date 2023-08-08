@@ -9,5 +9,5 @@ public partial class UserHasApplication
 
     public int ApplicationId { get; set; }
 
-    //public virtual Application Application { get; set; } = null!;
+  //  public virtual Application Application { get; set; } = null!;
 }

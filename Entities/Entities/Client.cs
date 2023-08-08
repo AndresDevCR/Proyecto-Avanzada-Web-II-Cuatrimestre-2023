@@ -21,7 +21,7 @@ public partial class Client
 
     public DateTime UpdatedAt { get; set; }
 
-    public virtual Enterprise Enterprise { get; set; } = null!;
+   //public virtual Enterprise Enterprise { get; set; } = null!;
 
-    //public virtual ICollection<Quotation> Quotations { get; set; } = new List<Quotation>();
+   // public virtual ICollection<Quotation> Quotations { get; set; } = new List<Quotation>();
 }
