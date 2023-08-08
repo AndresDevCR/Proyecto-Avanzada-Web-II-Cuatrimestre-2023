@@ -170,10 +170,10 @@ public partial class PrograContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
 
-            // entity.HasOne(d => d.Enterprise).WithMany(p => p.Clients)
-            //     .HasForeignKey(d => d.EnterpriseId)
-            //     .OnDelete(DeleteBehavior.ClientSetNull)
-            //     .HasConstraintName("FK__client__enterpri__540C7B00");
+             entity.HasOne(d => d.Enterprise).WithMany(p => p.Clients)
+                 .HasForeignKey(d => d.EnterpriseId)
+                 .OnDelete(DeleteBehavior.ClientSetNull)
+                 .HasConstraintName("FK__client__enterpri__540C7B00");
         });
 
         modelBuilder.Entity<Company>(entity =>
