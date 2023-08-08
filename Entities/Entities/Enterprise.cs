@@ -13,5 +13,5 @@ public partial class Enterprise
 
     public DateTime UpdatedAt { get; set; }
 
-    // public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
+    public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
 }
