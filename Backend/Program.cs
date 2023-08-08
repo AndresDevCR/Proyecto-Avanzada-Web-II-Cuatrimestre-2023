@@ -38,6 +38,8 @@ builder.Services.AddScoped<ISupplierDal, SupplierDalImpl>();
 builder.Services.AddScoped<IVacationDal, VacationDalImpl>();
 builder.Services.AddScoped<IQuotationDal, QuotationDalImpl>();
 builder.Services.AddScoped<IUserHasApplicationDal, UserHasApplicationDalImpl>();
+builder.Services.AddScoped<IPermissionDAL, PermissionDalImpl>();
+builder.Services.AddScoped<IPositionDAL, PositionDalImpl>();
 
 
 
