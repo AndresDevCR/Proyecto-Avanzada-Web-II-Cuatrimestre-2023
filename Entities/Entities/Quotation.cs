@@ -29,7 +29,7 @@ public partial class Quotation
 
     public DateTime UpdatedAt { get; set; }
 
-    // public virtual Client Client { get; set; } = null!;
+   // public virtual Client Client { get; set; } = null!;
 
-    // public virtual ICollection<Invoice> Invoices { get; set; } = new List<Invoice>();
+   // public virtual ICollection<Invoice> Invoices { get; set; } = new List<Invoice>();
 }

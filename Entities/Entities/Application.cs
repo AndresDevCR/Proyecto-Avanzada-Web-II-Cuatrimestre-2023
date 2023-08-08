@@ -19,5 +19,5 @@ public partial class Application
 
     public DateTime UpdatedOn { get; set; }
 
-    //public virtual ICollection<UserHasApplication> UserHasApplications { get; set; } = new List<UserHasApplication>();
+   // public virtual ICollection<UserHasApplication> UserHasApplications { get; set; } = new List<UserHasApplication>();
 }
