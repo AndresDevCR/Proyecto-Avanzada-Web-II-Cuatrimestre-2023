@@ -11,9 +11,9 @@ public partial class Role
 
     public string? Description { get; set; }
 
-    public DateTime CreatedOn { get; set; }
+    public DateTime CreatedAt { get; set; }
 
-    public DateTime UpdatedOn { get; set; }
+    public DateTime UpdatedAt { get; set; }
 
-    public virtual ICollection<Permission> Permissions { get; set; } = new List<Permission>();
+    //public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

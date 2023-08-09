@@ -9,9 +9,25 @@ public partial class Company
 
     public string Name { get; set; } = null!;
 
-    public string Address { get; set; } = null!;
+    public string? Description { get; set; }
 
-    public DateTime CreatedOn { get; set; }
+    public string? Category { get; set; }
 
-    public DateTime UpdatedOn { get; set; }
+    public string? PrimaryPhoneNumber { get; set; }
+
+    public string? SecondaryPhoneNumber { get; set; }
+
+    public string? City { get; set; }
+
+    public string? State { get; set; }
+
+    public string? Country { get; set; }
+
+    public bool? IsActive { get; set; }
+
+    public DateTime CreatedAt { get; set; }
+
+    public DateTime UpdatedAt { get; set; }
+
+    //public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

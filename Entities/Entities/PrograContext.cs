@@ -22,7 +22,15 @@ public partial class PrograContext : DbContext
 
     public virtual DbSet<Application> Applications { get; set; }
 
+    public virtual DbSet<Client> Clients { get; set; }
+
     public virtual DbSet<Company> Companies { get; set; }
+
+    public virtual DbSet<Department> Departments { get; set; }
+
+    public virtual DbSet<Employee> Employees { get; set; }
+
+    public virtual DbSet<Enterprise> Enterprises { get; set; }
 
     public virtual DbSet<HumanResource> HumanResources { get; set; }
 
@@ -32,49 +40,69 @@ public partial class PrograContext : DbContext
 
     public virtual DbSet<Location> Locations { get; set; }
 
+    public virtual DbSet<Payment> Payments { get; set; }
+
     public virtual DbSet<Permission> Permissions { get; set; }
 
     public virtual DbSet<Phone> Phones { get; set; }
 
+    public virtual DbSet<Position> Positions { get; set; }
+
+    public virtual DbSet<Profile> Profiles { get; set; }
+
+    public virtual DbSet<Quotation> Quotations { get; set; }
+
     public virtual DbSet<Role> Roles { get; set; }
+
+    public virtual DbSet<RoleHasPermission> RoleHasPermissions { get; set; }
+
+    public virtual DbSet<Supplier> Suppliers { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserHasApplication> UserHasApplications { get; set; }
 
+    public virtual DbSet<Vacation> Vacations { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(Util.ConnectionString);
         base.OnConfiguring(optionsBuilder);
-
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<Address>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__address__3213E83FAD1C2655");
+            entity.HasKey(e => e.Id).HasName("PK__address__3213E83F6932B275");
 
             entity.ToTable("address");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.City)
-                .HasMaxLength(50)
+                .HasMaxLength(15)
                 .IsUnicode(false)
                 .HasColumnName("city");
+            entity.Property(e => e.Country)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .HasColumnName("country");
             entity.Property(e => e.CreatedOn)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("created_on");
-            entity.Property(e => e.PostalCode)
-                .HasMaxLength(10)
+            entity.Property(e => e.Description)
+                .HasMaxLength(300)
                 .IsUnicode(false)
-                .HasColumnName("postal_code");
-            entity.Property(e => e.Street)
-                .HasMaxLength(50)
+                .HasColumnName("description");
+            entity.Property(e => e.IsPrimary)
+                .HasDefaultValueSql("((1))")
+                .HasColumnName("is_primary");
+            entity.Property(e => e.State)
+                .HasMaxLength(15)
                 .IsUnicode(false)
-                .HasColumnName("street");
+                .HasColumnName("state");
             entity.Property(e => e.UpdatedOn)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_on");
@@ -83,7 +111,7 @@ public partial class PrograContext : DbContext
 
         modelBuilder.Entity<Application>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__applicat__3213E83F96E636F5");
+            entity.HasKey(e => e.Id).HasName("PK__applicat__3213E83F20C3D033");
 
             entity.ToTable("application");
 
@@ -111,32 +139,180 @@ public partial class PrograContext : DbContext
                 .HasColumnName("updated_on");
         });
 
+        modelBuilder.Entity<Client>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__client__3213E83F0321D778");
+
+            entity.ToTable("client");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Address)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("address");
+            entity.Property(e => e.ClientName)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("client_name");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("created_at");
+            entity.Property(e => e.Email)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.EnterpriseId).HasColumnName("enterprise_id");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("phone");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("updated_at");
+
+            //entity.HasOne(d => d.Enterprise).WithMany(p => p.Clients)
+              //  .HasForeignKey(d => d.EnterpriseId)
+                //.OnDelete(DeleteBehavior.ClientSetNull)
+                //.HasConstraintName("FK__client__enterpri__540C7B00");
+        });
+
         modelBuilder.Entity<Company>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__company__3213E83F12423531");
+            entity.HasKey(e => e.Id).HasName("PK__company__3213E83FB386FBB2");
 
             entity.ToTable("company");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Address)
-                .HasMaxLength(50)
+            entity.Property(e => e.Category)
+                .HasMaxLength(255)
                 .IsUnicode(false)
-                .HasColumnName("address");
-            entity.Property(e => e.CreatedOn)
+                .HasColumnName("category");
+            entity.Property(e => e.City)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("city");
+            entity.Property(e => e.Country)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("country");
+            entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
-                .HasColumnName("created_on");
+                .HasColumnName("created_at");
+            entity.Property(e => e.Description)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("description");
+            entity.Property(e => e.IsActive)
+                .HasDefaultValueSql("((1))")
+                .HasColumnName("is_active");
             entity.Property(e => e.Name)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("name");
-            entity.Property(e => e.UpdatedOn)
+            entity.Property(e => e.PrimaryPhoneNumber)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("primary_phone_number");
+            entity.Property(e => e.SecondaryPhoneNumber)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("secondary_phone_number");
+            entity.Property(e => e.State)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("state");
+            entity.Property(e => e.UpdatedAt)
                 .HasDefaultValueSql("(getdate())")
-                .HasColumnName("updated_on");
+                .HasColumnName("updated_at");
+        });
+
+        modelBuilder.Entity<Department>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__departme__3213E83F3C8CE103");
+
+            entity.ToTable("department");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("created_at");
+            entity.Property(e => e.DepartmentName)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("department_name");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("updated_at");
+        });
+
+        modelBuilder.Entity<Employee>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__employee__3213E83F53CE57B4");
+
+            entity.ToTable("employee");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.AvailableVacationQuantity).HasColumnName("available_vacation_quantity");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("created_at");
+            entity.Property(e => e.DepartmentId).HasColumnName("department_id");
+            entity.Property(e => e.Email)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.EmployeeName)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("employee_name");
+            entity.Property(e => e.EnrollmentDate)
+                .HasColumnType("date")
+                .HasColumnName("enrollment_date");
+            entity.Property(e => e.MonthlySalary)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("monthly_salary");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("phone");
+            entity.Property(e => e.PositionId).HasColumnName("position_id");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("updated_at");
+
+           // entity.HasOne(d => d.Department).WithMany(p => p.Employees)
+             //   .HasForeignKey(d => d.DepartmentId)
+               // .OnDelete(DeleteBehavior.ClientSetNull)
+                //.HasConstraintName("FK__employee__depart__6FB49575");
+
+//            entity.HasOne(d => d.Position).WithMany(p => p.Employees)
+  //              .HasForeignKey(d => d.PositionId)
+    //            .OnDelete(DeleteBehavior.ClientSetNull)
+      //          .HasConstraintName("FK__employee__positi__6EC0713C");
+        });
+
+        modelBuilder.Entity<Enterprise>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__enterpri__3213E83F46F1C233");
+
+            entity.ToTable("enterprise");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("created_at");
+            entity.Property(e => e.EnterpriseName)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("enterprise_name");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("updated_at");
         });
 
         modelBuilder.Entity<HumanResource>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__human_re__3213E83FFB6949D0");
+            entity.HasKey(e => e.Id).HasName("PK__human_re__3213E83F983AC581");
 
             entity.ToTable("human_resource");
 
@@ -187,7 +363,7 @@ public partial class PrograContext : DbContext
 
         modelBuilder.Entity<Inventory>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__inventor__3213E83F7F260D13");
+            entity.HasKey(e => e.Id).HasName("PK__inventor__3213E83F59FECB9C");
 
             entity.ToTable("inventory");
 
@@ -214,26 +390,17 @@ public partial class PrograContext : DbContext
 
         modelBuilder.Entity<Invoice>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__invoice__3213E83F2AF25504");
+            entity.HasKey(e => e.Id).HasName("PK__invoice__3213E83F5E9CB071");
 
             entity.ToTable("invoice");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Address)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("address");
-            entity.Property(e => e.ClientName)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("client_name");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("created_at");
-            entity.Property(e => e.Email)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("email");
+            entity.Property(e => e.DollarValue)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("dollar_value");
             entity.Property(e => e.ExpirationDate)
                 .HasColumnType("date")
                 .HasColumnName("expiration_date");
@@ -241,19 +408,32 @@ public partial class PrograContext : DbContext
             entity.Property(e => e.IssueDate)
                 .HasColumnType("date")
                 .HasColumnName("issue_date");
-            entity.Property(e => e.OrderNumber).HasColumnName("order_number");
-            entity.Property(e => e.Phone)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("phone");
+            entity.Property(e => e.QuotationId).HasColumnName("quotation_id");
+            entity.Property(e => e.SupplierId).HasColumnName("supplier_id");
+            entity.Property(e => e.TotalColon)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("total_colon");
+            entity.Property(e => e.TotalDollar)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("total_dollar");
             entity.Property(e => e.UpdatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
+
+   //         entity.HasOne(d => d.Quotation).WithMany(p => p.Invoices)
+     //           .HasForeignKey(d => d.QuotationId)
+       //         .OnDelete(DeleteBehavior.ClientSetNull)
+         //       .HasConstraintName("FK__invoice__quotati__6166761E");
+
+     //       entity.HasOne(d => d.Supplier).WithMany(p => p.Invoices)
+       //         .HasForeignKey(d => d.SupplierId)
+         //       .OnDelete(DeleteBehavior.ClientSetNull)
+           //     .HasConstraintName("FK__invoice__supplie__625A9A57");
         });
 
         modelBuilder.Entity<Location>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__location__3213E83F9F55AEBD");
+            entity.HasKey(e => e.Id).HasName("PK__location__3213E83F22C5B309");
 
             entity.ToTable("location");
 
@@ -281,9 +461,78 @@ public partial class PrograContext : DbContext
                 .HasColumnName("updated_on");
         });
 
+        modelBuilder.Entity<Payment>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__payment__3213E83FF7DFAA77");
+
+            entity.ToTable("payment");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.BiweeklySalary)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("biweekly_salary");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("created_at");
+            entity.Property(e => e.DailySalary)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("daily_salary");
+            entity.Property(e => e.DeductionTotal)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("deduction_total");
+            entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+            entity.Property(e => e.ExtraTime)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("extra_time");
+            entity.Property(e => e.ExtraTimeTotal)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("extra_time_total");
+            entity.Property(e => e.ExtraTimeValue)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("extra_time_value");
+            entity.Property(e => e.GrossPayment)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("gross_payment");
+            entity.Property(e => e.GrossPaymentSocialDeduction)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("gross_payment_social_deduction");
+            entity.Property(e => e.HourRate)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("hour_rate");
+            entity.Property(e => e.InsPayroll)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("ins_payroll");
+            entity.Property(e => e.MedicalLeaveDays)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("medical_leave_days");
+            entity.Property(e => e.NetPayment)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("net_payment");
+            entity.Property(e => e.NetPaymentDollar)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("net_payment_dollar");
+            entity.Property(e => e.NotPayedLeaveDays)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("not_payed_leave_days");
+            entity.Property(e => e.PaymentAdvance)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("payment_advance");
+            entity.Property(e => e.Subsidy)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("subsidy");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("updated_at");
+
+   //         entity.HasOne(d => d.Employee).WithMany(p => p.Payments)
+     //           .HasForeignKey(d => d.EmployeeId)
+       //         .OnDelete(DeleteBehavior.ClientSetNull)
+         //       .HasConstraintName("FK__payment__employe__793DFFAF");
+        });
+
         modelBuilder.Entity<Permission>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__permissi__3213E83F6C7121B4");
+            entity.HasKey(e => e.Id).HasName("PK__permissi__3213E83FBF7C8BAB");
 
             entity.ToTable("permission");
 
@@ -306,7 +555,7 @@ public partial class PrograContext : DbContext
 
         modelBuilder.Entity<Phone>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__phone__3213E83F3510D2AD");
+            entity.HasKey(e => e.Id).HasName("PK__phone__3213E83FC84A0ADD");
 
             entity.ToTable("phone");
 
@@ -314,26 +563,118 @@ public partial class PrograContext : DbContext
             entity.Property(e => e.CreatedOn)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("created_on");
-            entity.Property(e => e.Number)
-                .HasMaxLength(20)
+            entity.Property(e => e.IsPrimary)
+                .HasDefaultValueSql("((1))")
+                .HasColumnName("is_primary");
+            entity.Property(e => e.Phone1)
+                .HasMaxLength(15)
                 .IsUnicode(false)
-                .HasColumnName("number");
+                .HasColumnName("phone");
+            entity.Property(e => e.Type)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .HasColumnName("type");
             entity.Property(e => e.UpdatedOn)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_on");
             entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            //entity.HasOne(d => d.User).WithMany(p => p.Phones)
+              //  .HasForeignKey(d => d.UserId)
+                //.HasConstraintName("fk_user");
+        });
+
+        modelBuilder.Entity<Position>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__position__3213E83F0221AD45");
+
+            entity.ToTable("position");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("created_at");
+            entity.Property(e => e.PositionName)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("position_name");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("updated_at");
+        });
+
+        modelBuilder.Entity<Profile>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__profile__3213E83FA9B4A434");
+
+            entity.ToTable("profile");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Birthdate)
+                .HasColumnType("date")
+                .HasColumnName("birthdate");
+            entity.Property(e => e.ImageUrl)
+                .HasMaxLength(300)
+                .IsUnicode(false)
+                .HasColumnName("image_url");
+        });
+
+        modelBuilder.Entity<Quotation>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__quotatio__3213E83FA8CB02C1");
+
+            entity.ToTable("quotation");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.ClientId).HasColumnName("client_id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("created_at");
+            entity.Property(e => e.Description)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("description");
+            entity.Property(e => e.EInvoiceCode)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("e_invoice_code");
+            entity.Property(e => e.IssueDate)
+                .HasColumnType("date")
+                .HasColumnName("issue_date");
+            entity.Property(e => e.PoDate)
+                .HasColumnType("date")
+                .HasColumnName("po_date");
+            entity.Property(e => e.PoNumber).HasColumnName("po_number");
+            entity.Property(e => e.QuoteTitle)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("quote_title");
+            entity.Property(e => e.TotalPayment)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("total_payment");
+            entity.Property(e => e.TotalPaymentDollar)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("total_payment_dollar");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("updated_at");
+
+  //          entity.HasOne(d => d.Client).WithMany(p => p.Quotations)
+    //            .HasForeignKey(d => d.ClientId)
+      //          .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK__quotation__clien__58D1301D");
         });
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__role__3213E83F1D31A9F4");
+            entity.HasKey(e => e.Id).HasName("PK__role__3213E83F5A87427C");
 
             entity.ToTable("role");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.CreatedOn)
+            entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
-                .HasColumnName("created_on");
+                .HasColumnName("created_at");
             entity.Property(e => e.Description)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -342,35 +683,51 @@ public partial class PrograContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("name");
-            entity.Property(e => e.UpdatedOn)
+            entity.Property(e => e.UpdatedAt)
                 .HasDefaultValueSql("(getdate())")
-                .HasColumnName("updated_on");
+                .HasColumnName("updated_at");
+        });
 
-            entity.HasMany(d => d.Permissions).WithMany(p => p.Roles)
-                .UsingEntity<Dictionary<string, object>>(
-                    "RoleHasPermission",
-                    r => r.HasOne<Permission>().WithMany()
-                        .HasForeignKey("PermissionId")
-                        .HasConstraintName("permission_id_fk"),
-                    l => l.HasOne<Role>().WithMany()
-                        .HasForeignKey("RoleId")
-                        .HasConstraintName("role_id_fk"),
-                    j =>
-                    {
-                        j.HasKey("RoleId", "PermissionId").HasName("role_permissions_pk");
-                        j.ToTable("role_has_permission");
-                        j.IndexerProperty<int>("RoleId").HasColumnName("role_id");
-                        j.IndexerProperty<int>("PermissionId").HasColumnName("permission_id");
-                    });
+        modelBuilder.Entity<RoleHasPermission>(entity =>
+        {
+            entity.HasKey(e => new { e.RoleId, e.PermissionId }).HasName("role_perm_pk");
+
+            entity.ToTable("role_has_permission");
+
+            entity.Property(e => e.RoleId).HasColumnName("role_id");
+            entity.Property(e => e.PermissionId).HasColumnName("permission_id");
+
+    //        entity.HasOne(d => d.Permission).WithMany(p => p.RoleHasPermissions)
+      //          .HasForeignKey(d => d.PermissionId)
+        //        .HasConstraintName("fk_permission");
+        });
+
+        modelBuilder.Entity<Supplier>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__supplier__3213E83F90BA682D");
+
+            entity.ToTable("supplier");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("created_at");
+            entity.Property(e => e.SupplierName)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("supplier_name");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("updated_at");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__users__3213E83FCAF650E0");
+            entity.HasKey(e => e.Id).HasName("PK__user__3213E83FE51FB8B9");
 
-            entity.ToTable("users");
+            entity.ToTable("user");
 
-            entity.HasIndex(e => e.Email, "UQ__users__AB6E6164F8566CF5").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__user__AB6E616487D1811D").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CompanyId).HasColumnName("company_id");
@@ -409,16 +766,59 @@ public partial class PrograContext : DbContext
             entity.Property(e => e.UpdatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnName("updated_at");
+
+            //entity.HasOne(d => d.Company).WithMany(p => p.Users)
+              //  .HasForeignKey(d => d.CompanyId)
+               // .HasConstraintName("fk_company");
+
+            //entity.HasOne(d => d.Role).WithMany(p => p.Users)
+              //  .HasForeignKey(d => d.RoleId)
+              //  .HasConstraintName("fk_role");
         });
 
         modelBuilder.Entity<UserHasApplication>(entity =>
         {
-            entity.HasKey(e => new { e.UserId, e.ApplicationId }).HasName("user_applications_pk");
+            entity.HasKey(e => new { e.UserId, e.ApplicationId }).HasName("user_app_pk");
 
             entity.ToTable("user_has_applications");
 
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.ApplicationId).HasColumnName("application_id");
+
+    //        entity.HasOne(d => d.Application).WithMany(p => p.UserHasApplications)
+      //          .HasForeignKey(d => d.ApplicationId)
+        //        .HasConstraintName("fk_application");
+        });
+
+        modelBuilder.Entity<Vacation>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__vacation__3213E83F6A480C96");
+
+            entity.ToTable("vacation");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("created_at");
+            entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+            entity.Property(e => e.ReentryDate)
+                .HasColumnType("date")
+                .HasColumnName("reentry_date");
+            entity.Property(e => e.RequestStatus)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("request_status");
+            entity.Property(e => e.StartDate)
+                .HasColumnType("date")
+                .HasColumnName("start_date");
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("updated_at");
+
+   //         entity.HasOne(d => d.Employee).WithMany(p => p.Vacations)
+     //           .HasForeignKey(d => d.EmployeeId)
+       //         .OnDelete(DeleteBehavior.ClientSetNull)
+         //       .HasConstraintName("FK__vacation__employ__74794A92");
         });
 
         OnModelCreatingPartial(modelBuilder);

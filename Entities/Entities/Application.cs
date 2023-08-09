@@ -18,4 +18,6 @@ public partial class Application
     public DateTime CreatedOn { get; set; }
 
     public DateTime UpdatedOn { get; set; }
+
+   // public virtual ICollection<UserHasApplication> UserHasApplications { get; set; } = new List<UserHasApplication>();
 }

@@ -21,4 +21,10 @@
     <ProjectReference Include="..\DAL\DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Middlewares\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Middlewares\" />
+  </ItemGroup>
 </Project>

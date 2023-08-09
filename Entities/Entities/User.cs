@@ -32,4 +32,10 @@ public partial class User
     public DateTime UpdatedAt { get; set; }
 
     public DateTime? LastLogin { get; set; }
+
+    //public virtual Company? Company { get; set; }
+
+    //public virtual ICollection<Phone> Phones { get; set; } = new List<Phone>();
+
+    //public virtual Role? Role { get; set; }
 }

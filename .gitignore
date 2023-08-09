@@ -361,3 +361,32 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+
+# intelij Rider
+.idea/
+*.sln.iml
+*.csproj.iml
+*.ipr
+*.iws
+*.ids
+*.dbmdl
+*.sln.ide
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.ide-shelf
+*.sln.ide-ws
+*.sln.ide-shelf-ws
+*.sln.ide-shelf-ws-*
+*.sln.ide-ws-*
+*.sln.ide-shelf-ws-*
+*.sln.ide-ws-*
+*.sln.ide-shelf-ws-*
+*.sln.ide-ws-*
+*.sln.ide-shelf-ws-*
+*.sln.ide-ws-*
+
+# Rider
+.idea/
