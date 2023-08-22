@@ -1,9 +1,14 @@
 using Backend.Middlewares;
 using DAL.Implementations;
 using DAL.Interfaces;
+using Entities.Authentication;
 using Entities.Entities;
 using Entities.Utilities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +45,11 @@ builder.Services.AddScoped<IQuotationDal, QuotationDalImpl>();
 builder.Services.AddScoped<IUserHasApplicationDal, UserHasApplicationDalImpl>();
 builder.Services.AddScoped<IPermissionDAL, PermissionDalImpl>();
 builder.Services.AddScoped<IPositionDAL, PositionDalImpl>();
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+    .AddEntityFrameworkStores<PrograContext>()
+    .AddDefaultTokenProviders();
+
+
 
 
 
@@ -58,6 +68,32 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader();
     });
 });
+
+#region JWT
+
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+
+})
+
+    .AddJwtBearer(options =>
+    {
+        options.SaveToken = true;
+        options.RequireHttpsMetadata = false;
+        options.TokenValidationParameters = new TokenValidationParameters()
+        {
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+        };
+    });
+
+
+
+
+#endregion
 
 var app = builder.Build();
 
